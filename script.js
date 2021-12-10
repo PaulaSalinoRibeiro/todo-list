@@ -23,7 +23,7 @@ button.addEventListener('click', addItem);
 
 function addItem(){
     let button = document.getElementById('texto-tarefa').value; // https://stackoverflow.com/questions/11563638/how-do-i-get-the-value-of-text-input-field-using-javascript
-    let item = document.createElement('li');
-    orderList.appendChild(item);
-    orderList.innerText = button;
+    let li = document.createElement('li');
+    orderList.appendChild(li);
+    li.innerText = button;
 }
