@@ -26,4 +26,11 @@ function addItem(){
     let li = document.createElement('li');
     orderList.appendChild(li);
     li.innerText = button;
+    // clear input field
+}
+
+orderList.addEventListener('click', selected);
+function selected(event){
+    event.target.classList.add('item')
+    
 }
