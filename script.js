@@ -8,3 +8,7 @@ let input = document.createElement('input');
 header.appendChild(input);
 input.type = 'text';
 input.id = 'texto-tarefa';
+
+let orderList = document.createElement('ol');
+header.appendChild(orderList);
+orderList.id = 'lista-tarefas';
