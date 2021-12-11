@@ -54,12 +54,17 @@ function completedItem(event){
 
  let clearButton = document.createElement('button');
 header.appendChild(clearButton); 
-clearButton.id = 'apaga-tudo'
+clearButton.id = 'apaga-tudo';
+clearButton.innerText = 'Apaga';
 
 clearButton.addEventListener('click', clearList); 
 
  function clearList(){
-
     let itens = document.querySelectorAll('li');
+     for(let index = 0; index < itens.length; index += 1){
 
+        orderList.removeChild(itens[index])
+
+    } 
+    
 } 
