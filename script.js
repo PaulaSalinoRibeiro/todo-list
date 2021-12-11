@@ -21,7 +21,6 @@ button.innerText = 'Adicionar';
 
 button.addEventListener('click', addItem);
 
-
 function addItem(event){
     let button = document.getElementById('texto-tarefa'); 
     let li = document.createElement('li');
@@ -33,7 +32,14 @@ function addItem(event){
 orderList.addEventListener('click', selected);
 
 function selected(event){
-  
-    event.target.classList.add('selected');
+    event.target.className = 'selected';
+    let itens = document.querySelectorAll('li');
+    for(let index = 0; index < itens.length; index += 1){
+        if(itens[index].className === 'selected'){
+            itens[index].className = '';
+        }
+    }
+    event.target.className = 'selected';
 }
+
 
