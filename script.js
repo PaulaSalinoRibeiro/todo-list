@@ -45,14 +45,14 @@ function selected(event){
 orderList.addEventListener('dblclick', completedItem);
 
 function completedItem(event){ 
-    if(event.target.className === 'completed'){
+    if(event.target.className === 'completed'){   // Lógica da regra de negocio desenvolvida em conjunto com Emerson Alves T-19C
         event.target.className = '';
     }else{
         event.target.className ='completed';
     }
 }
 
- let clearButton = document.createElement('button');
+let clearButton = document.createElement('button');
 header.appendChild(clearButton); 
 clearButton.id = 'apaga-tudo';
 clearButton.innerText = 'Apaga';
@@ -61,10 +61,24 @@ clearButton.addEventListener('click', clearList);
 
  function clearList(){
     let itens = document.querySelectorAll('li');
-     for(let index = 0; index < itens.length; index += 1){
-
+     for(let index = 0; index < itens.length; index += 1){  
         orderList.removeChild(itens[index])
-
     } 
-    
 } 
+
+let fineshButton = document.createElement('button');
+header.appendChild(fineshButton);
+fineshButton.innerText = 'Remove Item';
+fineshButton.id = 'remover-finalizados';
+
+fineshButton.addEventListener('click', removeItem)
+
+function removeItem(){
+    let itens = document.querySelectorAll('li');
+     for(let index = 0; index < itens.length; index += 1){      
+        if(itens[index].className === 'completed'){
+            console.log(itens[index]);
+            orderList.removeChild(itens[index]);
+        }
+    } 
+}
