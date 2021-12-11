@@ -42,4 +42,11 @@ function selected(event){
     event.target.className = 'selected';
 }
 
+orderList.addEventListener('dblclick', completedItem);
+
+
+function completedItem(event){
+    event.target.className = 'completed';
+}
+
 
