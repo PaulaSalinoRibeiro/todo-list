@@ -32,21 +32,34 @@ function addItem(event){
 orderList.addEventListener('click', selected);
 
 function selected(event){
-    event.target.className = 'selected';
+    event.target.style.backgroundColor = 'rgb(128, 128, 128)';
     let itens = document.querySelectorAll('li');
     for(let index = 0; index < itens.length; index += 1){
-        if(itens[index].className === 'selected'){
-            itens[index].className = '';
+        if(itens[index].style.backgroundColor === 'rgb(128, 128, 128)'){
+            itens[index].style.backgroundColor = 'rgb(255, 255, 255)';
         }
     }
-    event.target.className = 'selected';
+    event.target.style.backgroundColor = 'rgb(128, 128, 128)';
 }
 
 orderList.addEventListener('dblclick', completedItem);
 
-
-function completedItem(event){
-    event.target.className = 'completed';
+function completedItem(event){ 
+    if(event.target.className === 'completed'){
+        event.target.className = '';
+    }else{
+        event.target.className ='completed';
+    }
 }
 
+ let clearButton = document.createElement('button');
+header.appendChild(clearButton); 
+clearButton.id = 'apaga-tudo'
 
+clearButton.addEventListener('click', clearList); 
+
+ function clearList(){
+
+    let itens = document.querySelectorAll('li');
+
+} 
