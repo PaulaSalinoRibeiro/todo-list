@@ -16,21 +16,24 @@ orderList.id = 'lista-tarefas';
 
 let button = document.createElement('button');
 header.appendChild(button);
-button.id = 'criar-tarefas';
+button.id = 'criar-tarefa';
 button.innerText = 'Adicionar';
 
 button.addEventListener('click', addItem);
 
-function addItem(){
-    let button = document.getElementById('texto-tarefa').value; // https://stackoverflow.com/questions/11563638/how-do-i-get-the-value-of-text-input-field-using-javascript
+
+function addItem(event){
+    let button = document.getElementById('texto-tarefa'); 
     let li = document.createElement('li');
     orderList.appendChild(li);
-    li.innerText = button;
-    // clear input field
+    li.innerText = button.value; // ref.: https://stackoverflow.com/questions/11563638/how-do-i-get-the-value-of-text-input-field-using-javascript
+    button.value = '';  // ref.: https://stackoverflow.com/questions/14589193/clearing-my-form-inputs-after-submission
 }
 
 orderList.addEventListener('click', selected);
+
 function selected(event){
-    event.target.classList.add('item')
-    
+  
+    event.target.classList.add('selected');
 }
+
