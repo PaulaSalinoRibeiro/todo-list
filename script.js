@@ -67,7 +67,7 @@ function clearList(){
 
 let fineshButton = document.createElement('button');
 header.appendChild(fineshButton);
-fineshButton.innerText = 'Remove Item Finalizado';
+fineshButton.innerText = 'Remove Finalizado';
 fineshButton.id = 'remover-finalizados';
 
 fineshButton.addEventListener('click', removeItem)
@@ -89,32 +89,31 @@ saveButton.innerText = 'Salvar';
 saveButton.addEventListener('click', save);
 
 function save(){
-
     let list = document.querySelector('#lista-tarefas');
-    localStorage.setItem('list', JSON.stringify(list.innerText));
-    
+    let itensSave = localStorage.setItem('list', JSON.stringify(list.innerText));
+    //console.log(itensSave);  
 } 
   
-/*  function saveItens(){
+    function saveItens(){
     let savedItens = JSON.parse(localStorage.getItem('list'));
-    //console.log(savedItens);
-    let itens = savedItens.split('\n'); 
-    //console.log(itens);
-    for(let index = 0; index < itens.length; index += 1){
-        let list = document.createElement('li');
-        list.innerText = itens[index];
-        orderList.appendChild(list);
+        if(JSON.parse(localStorage.getItem('list')) !== null){
+            let itens = savedItens.split('\n'); 
+            for(let index = 0; index < savedItens; index += 1){
+                let list = document.createElement('li');
+                list.innerText = savedItens;
+                orderList.appendChild(list);
+            }
+        }
     } 
-} 
 
 window.onload = function(){
     saveItens() 
-}  */ 
+}   
 
 let buttonSelected = document.createElement('button');
 header.appendChild(buttonSelected);
 buttonSelected.id = 'remover-selecionado';
-buttonSelected.innerText = 'Remover Item Selecionado';
+buttonSelected.innerText = 'Remover Selecionado';
 
 buttonSelected.addEventListener('click', removeItemSelected);
 
