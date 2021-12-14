@@ -32,7 +32,6 @@ function addItem(event){
 orderList.addEventListener('click', selected);
 
 function selected(event){
-    //event.target.style.backgroundColor = 'rgb(128, 128, 128)';
     let itens = document.querySelectorAll('li');
     for(let index = 0; index < itens.length; index += 1){
         if(itens[index].style.backgroundColor === 'rgb(128, 128, 128)'){
@@ -68,12 +67,59 @@ function clearList(){
 
 let fineshButton = document.createElement('button');
 header.appendChild(fineshButton);
-fineshButton.innerText = 'Remove Item';
+fineshButton.innerText = 'Remove Item Finalizado';
 fineshButton.id = 'remover-finalizados';
 
 fineshButton.addEventListener('click', removeItem)
 
-function removeItem(){
+function removeItem(event){
+    let itens = document.querySelectorAll('li');
+    for(let index = 0; index < itens.length; index += 1){
+        if(itens[index].className === 'completed'){
+            orderList.removeChild(itens[index]);
+        }
+    }
+}
+
+ let saveButton = document.createElement('button');
+header.appendChild(saveButton);
+saveButton.id = 'salvar-tarefas';
+saveButton.innerText = 'Salvar';
+
+saveButton.addEventListener('click', save);
+
+function save(){
+
+    let list = document.querySelector('#lista-tarefas');
+    localStorage.setItem('list', JSON.stringify(list.innerText));
+    
+} 
+  
+/*  function saveItens(){
+    let savedItens = JSON.parse(localStorage.getItem('list'));
+    //console.log(savedItens);
+    let itens = savedItens.split('\n'); 
+    //console.log(itens);
+    for(let index = 0; index < itens.length; index += 1){
+        let list = document.createElement('li');
+        list.innerText = itens[index];
+        orderList.appendChild(list);
+    } 
+} 
+
+window.onload = function(){
+    saveItens() 
+}  */ 
+
+let buttonSelected = document.createElement('button');
+header.appendChild(buttonSelected);
+buttonSelected.id = 'remover-selecionado';
+buttonSelected.innerText = 'Remover Item Selecionado';
+
+buttonSelected.addEventListener('click', removeItemSelected);
+
+function removeItemSelected(){
+
     let itens = document.querySelectorAll('li');
     for(let index = 0; index < itens.length; index += 1){
         if(itens[index].style.backgroundColor === 'rgb(128, 128, 128)'){
@@ -82,30 +128,4 @@ function removeItem(){
     }
 }
 
-let saveButton = document.createElement('button');
-header.appendChild(saveButton);
-saveButton.id = 'salvar-tarefas';
-saveButton.innerText = 'Salvar';
-
-
-saveButton.addEventListener('click', save);
-
-function save(){
-
-    let list = document.querySelector('#lista-tarefas');
-    //console.log(list.innerHTML);
-    let saveItens = localStorage.setItem('list', JSON.stringify(list.innerText));
-}
-
-window.onload = function(){
-
-    let savedItens = JSON.parse(localStorage.getItem('list'));
-    let itens = savedItens.split('\n');
-    //console.log(itens.length);
-    for(let index = 0; index < itens.length; index += 1){
-        let li = document.createElement('li');
-        li.innerText = itens[index];
-        orderList.appendChild(li);
-    }
-}
     
