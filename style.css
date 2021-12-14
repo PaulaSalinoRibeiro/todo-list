@@ -1,4 +1,23 @@
-
 .completed{
     text-decoration: line-through;
 }
+
+button{
+    background-color: rgb(82, 82, 155);
+    margin: 3px;
+    color: white;
+    font-weight: 600;
+    border-radius: 8px;
+}
+
+body{
+    background-color: chartreuse;
+}
+
+header{
+    background-color: cornsilk;
+    margin: 15px;
+    padding: 15px;
+    border-radius: 5px;
+}
+

@@ -1,3 +1,4 @@
+
 let paragraph = document.createElement('p');
 let header = document.getElementById('header');
 header.appendChild(paragraph);
@@ -8,7 +9,6 @@ let input = document.createElement('input');
 header.appendChild(input);
 input.type = 'text';
 input.id = 'texto-tarefa';
-
 
 let orderList = document.createElement('ol');
 header.appendChild(orderList);
@@ -32,7 +32,7 @@ function addItem(event){
 orderList.addEventListener('click', selected);
 
 function selected(event){
-    event.target.style.backgroundColor = 'rgb(128, 128, 128)';
+    //event.target.style.backgroundColor = 'rgb(128, 128, 128)';
     let itens = document.querySelectorAll('li');
     for(let index = 0; index < itens.length; index += 1){
         if(itens[index].style.backgroundColor === 'rgb(128, 128, 128)'){
@@ -59,9 +59,9 @@ clearButton.innerText = 'Apaga';
 
 clearButton.addEventListener('click', clearList); 
 
- function clearList(){
+function clearList(){
     let itens = document.querySelectorAll('li');
-     for(let index = 0; index < itens.length; index += 1){  
+    for(let index = 0; index < itens.length; index += 1){  
         orderList.removeChild(itens[index])
     } 
 } 
@@ -75,10 +75,38 @@ fineshButton.addEventListener('click', removeItem)
 
 function removeItem(){
     let itens = document.querySelectorAll('li');
-     for(let index = 0; index < itens.length; index += 1){      
+    for(let index = 0; index < itens.length; index += 1){      
         if(itens[index].className === 'completed'){
-            console.log(itens[index]);
+            //console.log(itens[index]);
             orderList.removeChild(itens[index]);
         }
     } 
 }
+
+let saveButton = document.createElement('button');
+header.appendChild(saveButton);
+saveButton.id = 'salvar-tarefas';
+saveButton.innerText = 'Salvar';
+
+
+saveButton.addEventListener('click', save);
+
+function save(){
+
+    let list = document.querySelector('#lista-tarefas');
+    //console.log(list.innerHTML);
+    let saveItens = localStorage.setItem('list', JSON.stringify(list.innerText));
+}
+
+window.onload = function(){
+
+    let savedItens = JSON.parse(localStorage.getItem('list'));
+    let itens = savedItens.split('\n');
+    //console.log(itens.length);
+    for(let index = 0; index < itens.length; index += 1){
+        let li = document.createElement('li');
+        li.innerText = itens[index];
+        orderList.appendChild(li);
+    }
+}
+    
