@@ -75,12 +75,11 @@ fineshButton.addEventListener('click', removeItem)
 
 function removeItem(){
     let itens = document.querySelectorAll('li');
-    for(let index = 0; index < itens.length; index += 1){      
-        if(itens[index].className === 'completed'){
-            //console.log(itens[index]);
+    for(let index = 0; index < itens.length; index += 1){
+        if(itens[index].style.backgroundColor === 'rgb(128, 128, 128)'){
             orderList.removeChild(itens[index]);
         }
-    } 
+    }
 }
 
 let saveButton = document.createElement('button');
