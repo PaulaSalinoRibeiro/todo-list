@@ -90,21 +90,15 @@ saveButton.addEventListener('click', save);
 
 function save(){
     let list = document.querySelector('#lista-tarefas');
-    let itensSave = localStorage.setItem('list', JSON.stringify(list.innerText));
-    //console.log(itensSave);  
-} 
-  
-    function saveItens(){
+    let itensSave = localStorage.setItem('list', JSON.stringify(list.innerHTML));
+     
+}
+
+ function saveItens(){
     let savedItens = JSON.parse(localStorage.getItem('list'));
-        if(JSON.parse(localStorage.getItem('list')) !== null){
-            let itens = savedItens.split('\n'); 
-            for(let index = 0; index < savedItens; index += 1){
-                let list = document.createElement('li');
-                list.innerText = savedItens;
-                orderList.appendChild(list);
-            }
-        }
-    } 
+    //console.log(savedItens);
+    orderList.innerHTML = savedItens;
+}  
 
 window.onload = function(){
     saveItens() 
@@ -127,4 +121,3 @@ function removeItemSelected(){
     }
 }
 
-    
