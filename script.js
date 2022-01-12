@@ -81,7 +81,7 @@ function removeItem(event){
     }
 }
 
- let saveButton = document.createElement('button');
+let saveButton = document.createElement('button');
 header.appendChild(saveButton);
 saveButton.id = 'salvar-tarefas';
 saveButton.innerText = 'Salvar';
@@ -121,3 +121,51 @@ function removeItemSelected(){
     }
 }
 
+let upButton = document.createElement('button');
+upButton.id = 'mover-cima'
+upButton.innerHTML = '&#8593;'
+upButton.style.fontSize = '18px'
+header.appendChild(upButton)
+
+upButton.addEventListener('click', moveUp);
+
+
+let donwButton = document.createElement('button');
+donwButton.id = 'mover-baixo'
+donwButton.innerHTML = '&#8595;'
+donwButton.style.fontSize = '18px'
+header.appendChild(donwButton)
+
+donwButton.addEventListener('click', moveDonw); 
+
+function moveUp() {
+    let itensList = document.querySelectorAll('li');
+    let itens = [...itensList];
+    for(let i = 0; i < itens.length; i += 1){
+         if(itens[i].style.backgroundColor === 'rgb(128, 128, 128)' &&  i !== 0){
+            let move = itens[i];
+            itens[i] = itens[i - 1];
+            itens[i - 1] = move;
+        } 
+    }
+    orderList.innerHTML = '';
+    for(let i = 0; i < itens.length; i += 1){
+        orderList.appendChild(itens[i]);
+    }
+}
+
+ function moveDonw() {
+    let itensList = document.querySelectorAll('li');
+    let itens = [...itensList];
+    for(let i = 0; i < itens.length; i += 1){
+        if(itens[i].style.backgroundColor === 'rgb(128, 128, 128)' && i !== (itens.length - 1)){
+            let move = itens[i];
+            itens[i] = itens[i + 1];
+            itens[i + 1] = move;
+        }
+    }
+    orderList.innerHTML = '';
+    for(let i = 0; i < itens.length; i += 1){
+        orderList.appendChild(itens[i]);
+    }
+} 
