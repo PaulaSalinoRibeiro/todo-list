@@ -157,15 +157,18 @@ function moveUp() {
  function moveDonw() {
     let itensList = document.querySelectorAll('li');
     let itens = [...itensList];
-    for(let i = 0; i < itens.length; i += 1){
+    for(let i = itens.length - 1; i >= 0; i -= 1){
         if(itens[i].style.backgroundColor === 'rgb(128, 128, 128)' && i !== (itens.length - 1)){
             let move = itens[i];
             itens[i] = itens[i + 1];
             itens[i + 1] = move;
         }
+        // console.log(itens);
     }
     orderList.innerHTML = '';
     for(let i = 0; i < itens.length; i += 1){
         orderList.appendChild(itens[i]);
+        // console.log(itens[i]);
     }
-} 
+};
+
