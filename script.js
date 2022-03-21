@@ -111,8 +111,7 @@ buttonSelected.innerText = 'Remover Selecionado';
 
 buttonSelected.addEventListener('click', removeItemSelected);
 
-function removeItemSelected(){
-
+function removeItemSelected() {
     let itens = document.querySelectorAll('li');
     for(let index = 0; index < itens.length; index += 1){
         if(itens[index].style.backgroundColor === 'rgb(128, 128, 128)'){
